@@ -21,18 +21,18 @@ public class ListaDoble{
     if(empty()){
       inicio=fin=nuevo;
     }else{
-      if(//_---------------------------------------Condicion pendiente){
+      if(nuevo.getnum()<Inicio.getnum()){
         nuevo.setSig(inicio);
         inicio.setAnt(nuevo);
         setInicio(nuevo);
       }else{
-        if(//_---------------------------------------Condicion pendiente){
+        if(nuevo.getnum()<fin.getnum()){
           nuevo.setAnt(fin);
           fin.setSig(nuevo);
           setFin(nuevo);
         }else{
           Empleado aux=getInicio();
-          while(//_---------------------------------------Condicion pendiente){
+          while(aux!=null && nuevo.getnum()>aux.getnum()){
             aux=aux.getSig();
           }
           nuevo.setSig(aux);
@@ -74,9 +74,9 @@ public class ListaDoble{
     return (inicio==null && fin==null);
   }
   //**************************************************************************
-  public Empleado search(String nom){
+  public Empleado search(int num){
     Empleado aux=getInicio();
-    while(aux!=null && //---------------------Condicion pendiente----------){
+    while(aux!=null && num==aux.getnum()){
       aux=aux.getSig();
     }
     return aux;
