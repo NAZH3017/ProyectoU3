@@ -1,0 +1,37 @@
+public class Empleados{
+private String num;
+private short per,ded, hext;
+
+public void nvoemp(String num, int per, int ded, int hext){
+this.num = num;
+this.per = per;
+this.ded = ded;
+this.hext = hext;
+sig = ant = null;
+}
+
+public String getnum(){
+return num;
+}
+public void setnum( String num){
+this.num = num;
+}
+public short getper(){
+return per;
+}
+public void setper(short per){
+this.per = per;
+}
+public short getded(){
+return per;
+}
+public void setded(short ded){
+this.ded = ded;
+}
+public short hext (){
+return hext;
+}
+public void  sethext(short hext){
+this.hext = hext;
+}
+}
