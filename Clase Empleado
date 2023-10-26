@@ -1,6 +1,7 @@
 public class Empleados{
 private String num;
 private short per,ded, hext;
+private Empleado ant,sig;
 
 public void nvoemp(String num, int per, int ded, int hext){
 this.num = num;
@@ -33,5 +34,17 @@ return hext;
 }
 public void  sethext(short hext){
 this.hext = hext;
+}
+public Empleado getsig(){
+return sig;
+}
+public void setsig(Empleado sig){
+this.sig=sig;
+}
+public Empleado getant(){
+return ant;
+}
+public void setant(Empleado ant){
+this. ant = ant;
 }
 }
