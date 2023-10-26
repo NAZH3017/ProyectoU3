@@ -11,10 +11,10 @@ public class Main{
     do{
       System.out.println("<-----[MENU]----->");
       System.out.println("1. Agregar nómina de empleado en orden numérico ascendente");
-      System.out.println("2.");
-      System.out.println("3.");
-      System.out.println("4.");
-      System.out.println("5. SALIR");
+      System.out.println("2. Dar de baja nomina de empleado especifico");
+      System.out.println("3. Desplegar listado de empleados (Numero de empleados, Ingreso neto)");
+      System.out.println("4. Consultar nomina con opcion de cambiar datos");
+      System.out.println("5. ---SALIR---");
       System.out.print("Ingresar opcion: ");
       op=Integer.parseInt(leer.readLine());
       switch(op){
@@ -32,6 +32,7 @@ public class Main{
         break;
       //*************************************************************************
         case 3:
+          //Ingreso neto=suma de todos los ingresos/numero de empleados
 
 
           
