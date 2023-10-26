@@ -1,0 +1,4 @@
+package ProyectoU3;
+public class LD{
+private Empleado inicio, fin;
+public void insert(Empleado nuevo){
