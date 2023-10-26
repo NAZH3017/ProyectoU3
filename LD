@@ -1,4 +1,85 @@
 package ProyectoU3;
-public class LD{
-private Empleado inicio, fin;
-public void insert(Empleado nuevo){
+public class ListaDoble{
+  private Empleado inicio, fin;
+//------------------------------------------------------------------------------------------------------------Get's y Set's
+  //**************************************************************************Inicio
+  public Empleado getInicio(){
+    return inicio;
+  }
+  public void Empleado(Empleado inicio){
+    this.inicio = inicio;
+  }
+  //**************************************************************************Fin
+  public Empleado getFin(){
+    return fin;
+  }
+  public void setFin(Empleado fin){
+    this.fin = fin;
+  }
+//------------------------------------------------------------------------------------------------------------Métodos
+  public void insert(Empleado nuevo){
+    if(empty()){
+      inicio=fin=nuevo;
+    }else{
+      if(//_---------------------------------------Condicion pendiente){
+        nuevo.setSig(inicio);
+        inicio.setAnt(nuevo);
+        setInicio(nuevo);
+      }else{
+        if(//_---------------------------------------Condicion pendiente){
+          nuevo.setAnt(fin);
+          fin.setSig(nuevo);
+          setFin(nuevo);
+        }else{
+          Empleado aux=getInicio();
+          while(//_---------------------------------------Condicion pendiente){
+            aux=aux.getSig();
+          }
+          nuevo.setSig(aux);
+          nuevo.setAnt(aux.getAnt());
+          aux.setAnt(nuevo);
+          nuevo.getAnt().setSig(nuevo);
+        }
+      }
+    }
+  }
+  //**************************************************************************
+  public NodoDoble delete(String nom){
+    NodoDoble aux=search(nom);
+    if(empty()){
+      System.out.println("Lista vacia");
+      return null;
+    }
+    if(aux==null){
+      return null;
+    }else{
+      if(getInicio()==getFin()){//unico
+        setInicio(null);
+        setFin(null);
+      }else if(aux==getInicio()){
+        setInicio(aux.getSig());
+        getInicio().setAnt(null);
+      }else if(aux==getFin()){
+        setFin(aux.getAnt());
+        getFin().setSig(null);
+      }else{
+        aux.getSig().setAnt(aux.getAnt());
+        aux.getAnt().setSig(aux.getSig());
+      }
+      return aux;
+    }
+  }
+  //**************************************************************************
+  public boolean empty(){
+    return (inicio==null && fin==null);
+  }
+  //**************************************************************************
+  public Empleado search(String nom){
+    Empleado aux=getInicio();
+    while(aux!=null && //---------------------Condicion pendiente----------){
+      aux=aux.getSig();
+    }
+    return aux;
+  }
+//-----------------------------------------------------------------------------------------------------------
+}
