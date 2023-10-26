@@ -1,50 +1,54 @@
 public class Empleados{
-private String num;
-private short per,ded, hext;
-private Empleado ant,sig;
-
-public void nvoemp(String num, int per, int ded, int hext){
-this.num = num;
-this.per = per;
-this.ded = ded;
-this.hext = hext;
-sig = ant = null;
-}
-
-public String getnum(){
-return num;
-}
-public void setnum( String num){
-this.num = num;
-}
-public short getper(){
-return per;
-}
-public void setper(short per){
-this.per = per;
-}
-public short getded(){
-return per;
-}
-public void setded(short ded){
-this.ded = ded;
-}
-public short hext (){
-return hext;
-}
-public void  sethext(short hext){
-this.hext = hext;
-}
-public Empleado getsig(){
-return sig;
-}
-public void setsig(Empleado sig){
-this.sig=sig;
-}
-public Empleado getant(){
-return ant;
-}
-public void setant(Empleado ant){
-this. ant = ant;
-}
+  private short num, hext;
+  private double per, ded;
+  private Empleado ant,sig;
+//----------------------------------------------------------------Constructor
+  public Empleados(short num, double per, double ded, int hext){
+    this.num = num;
+    this.per = per;
+    this.ded = ded;
+    this.hext = hext;
+    sig = ant = null;
+  }
+//-----------------------------------------------------------Get's y Set's
+  public short getnum(){
+    return num;
+  }
+  public void setnum( short num){
+    this.num = num;
+  }
+  //**********************
+  public double getper(){
+    return per;
+  }
+  public void setper(double per){
+    this.per = per;
+  }
+  //**********************
+  public double getded(){
+    return per;
+  }
+  public void setded(double ded){
+    this.ded = ded;
+  }
+  //**********************
+  public short hext (){
+    return hext;
+  }
+  public void sethext(short hext){
+    this.hext = hext;
+  }
+  //*********************************
+  public Empleado getsig(){
+    return sig;
+  }
+  public void setsig(Empleado sig){
+    this.sig=sig;
+  }
+  public Empleado getant(){
+    return ant;
+  }
+  public void setant(Empleado ant){
+    this. ant = ant;
+  }
 }
