@@ -24,7 +24,12 @@ public class Main{
         switch(op){
         //*************************************************************************
           case 1:
-            
+            do{
+              System.out.println("Ingresa nombre");
+              String nom = leer.readLine();
+              System.out.println("Ingrese numero de empleado");
+              String num = leer.readLine();
+              
             
             
           break;
