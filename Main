@@ -75,7 +75,13 @@ public class Main{
       Empleado aux = search(num);
       if (aux != null){
        System.out.println("¿Deseas hacer algun cambio?");
-       
+       char r = char.parsechar(leer.readLine()).toUpperCase();
+       if (r == 'S'){
+       System.out.println("1. Cambio de nombre");
+       System.out.println("2. Cambio de numero de empleado");
+       System.out.println("3. Cambio de percepciones ");
+       System.out.println("4. Cambio de deducciones ");
+       System.out.println("5. Cambio de horas extra");
       
       
   }
