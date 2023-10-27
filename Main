@@ -3,7 +3,7 @@ package ProyectoU3;
 
 public class Main{
 //-------------------------------------------------Main---------------------------------------------
-  public satatic void main(String[] args){
+  public satatic void main(String[] args)trhows Exeption, ValorNoValidoExc{
     BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
     int op;
     LD LD=new LD();
@@ -16,6 +16,7 @@ public class Main{
       System.out.println("4. Consultar nomina con opcion de cambiar datos");
       System.out.println("5. ---SALIR---");
       System.out.print("Ingresar opcion: ");
+      try{
       op=Integer.parseInt(leer.readLine());
       switch(op){
       //*************************************************************************
@@ -44,6 +45,10 @@ public class Main{
           
         break;
       }
+      }catch(){
+
+
+      }catch(){}
       System.out.println();
     }while(op!=5);
   }
