@@ -44,7 +44,7 @@ public class ListaDoble{
     }
   }
   //**************************************************************************
-  public NodoDoble delete(String nom){
+  public NodoDoble delete(short num){
     NodoDoble aux=search(nom);
     if(empty()){
       System.out.println("Lista vacia");
@@ -77,7 +77,7 @@ public class ListaDoble{
    return false;
   }
   //**************************************************************************
-  public Empleado search(int num){
+  public Empleado search(short num){
     Empleado aux=getInicio();
     while(aux!=null && num==aux.getnum()){
       aux=aux.getSig();
