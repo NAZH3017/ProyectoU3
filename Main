@@ -3,7 +3,7 @@ package ProyectoU3;
 
 public class Main{
 //-------------------------------------------------Main---------------------------------------------
-  public satatic void main(String[] args)trhows Exeption, ValorNoValidoExc{
+  public satatic void main(String[] args)throws Exeption, ValorNoValidoExc{
     BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
     int op;
     LD LD=new LD();
@@ -17,39 +17,41 @@ public class Main{
       System.out.println("5. ---SALIR---");
       System.out.print("Ingresar opcion: ");
       try{
-      op=Integer.parseInt(leer.readLine());
-      switch(op){
-      //*************************************************************************
-        case 1:
-          
-          
-          
-        break;
-      //*************************************************************************
-        case 2:
-
-          
-          
-        break;
-      //*************************************************************************
-        case 3:
-          //Ingreso neto=suma de todos los ingresos/numero de empleados
-
-
-          
-        break;
-      //*************************************************************************
-        case 4:
-
-
-          
-        break;
-      }
-      }catch(){
-
-
-      }catch(){}
-      System.out.println();
+        op=Integer.parseInt(leer.readLine());
+        if(op<1 || op>5){
+          throw new ValorNoValidoExc("<<OPCION NO VALIDA>>");
+        }
+        switch(op){
+        //*************************************************************************
+          case 1:
+            
+            
+            
+          break;
+        //*************************************************************************
+          case 2:
+  
+            
+            
+          break;
+        //*************************************************************************
+          case 3:
+            //Ingreso neto=suma de todos los ingresos/numero de empleados
+  
+  
+            
+          break;
+        //*************************************************************************
+          case 4:
+  
+  
+            
+          break;
+        }
+      }catch(NumberFormatException e){
+        System.out.println("<<ERROR: VALOR NO VALIDO>>");
+      }catch(ValorNoValidoExc e){}
+        System.out.printl(e.getMessage());
     }while(op!=5);
   }
 }
