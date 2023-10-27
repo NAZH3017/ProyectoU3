@@ -82,8 +82,12 @@ public class Main{
        System.out.println("3. Cambio de percepciones ");
        System.out.println("4. Cambio de deducciones ");
        System.out.println("5. Cambio de horas extra");
-      
-      
+       System.out.println("¿Que cambio deseas hacer?(Salida -1)");
+       int op1 = Integer.parseInt(leer.readLine());
+       switch (op){
+        case 1:
+          
+      }while(op != -1);
   }
 //-------------------------------------------------Main---------------------------------------------
   public static void main(String[] args)throws Exception, ValorNoValidoExc{
