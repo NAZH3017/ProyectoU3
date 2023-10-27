@@ -1,6 +1,24 @@
 package ProyectoU3;
 
-
+public void llenar(LD LD){
+do{
+              System.out.println("Ingresa nombre");
+              String nom = leer.readLine();
+              System.out.println("Ingrese numero de empleado");
+              short num = short.parseshort(leer.readLine());
+              System.out.println("Ingrese percepciones");
+              double per = short.parsedouble(leer.readLine());
+              System.out.println("Ingresa las deducciones");
+              double ded = double.parsedouble(leer.readLine());
+              System.out.println("¿Hizo horas extra? (S o N )")
+              char r = char.parsechar(leer.readLine()).toUpperCase();
+              if (r == 'S'){
+              System.out.println("¿Cuantas horas extra hizo?");
+              short hext = short.parseshort(leer.readLine());
+              }else{
+              short hext = 0;
+              }
+              if (LD.empty
 public class Main{
 //-------------------------------------------------Main---------------------------------------------
   public satatic void main(String[] args)throws Exeption, ValorNoValidoExc{
@@ -24,23 +42,7 @@ public class Main{
         switch(op){
         //*************************************************************************
           case 1:
-            do{
-              System.out.println("Ingresa nombre");
-              String nom = leer.readLine();
-              System.out.println("Ingrese numero de empleado");
-              String num = leer.readLine();
-              System.out.println("Ingrese percepciones");
-              double per = short.parsedouble(leer.readLine());
-              System.out.println("Ingresa las deducciones");
-              double ded = double.parsedouble(leer.readLine());
-              System.out.println("¿Hizo horas extra? (S o N )")
-              char r = char.parsechar(leer.readLine()).toUpperCase();
-              if (r == 'S'){
-              System.out.println("¿Cuantas horas extra hizo?");
-              short hext = short.parseshort(leer.readLine());
-              }else{
-              short hext = 0;
-              }
+           
              
             
             
