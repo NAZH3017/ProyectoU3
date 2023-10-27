@@ -36,7 +36,6 @@ public class Main{
           break;
         //*************************************************************************
           case 3:
-            //Ingreso neto=suma de todos los ingresos/numero de empleados
   
   
             
