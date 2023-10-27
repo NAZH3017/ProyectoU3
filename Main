@@ -29,6 +29,7 @@ public class Main{
               String nom = leer.readLine();
               System.out.println("Ingrese numero de empleado");
               String num = leer.readLine();
+              System.out.println("Ingrese percepciones");
               
             
             
