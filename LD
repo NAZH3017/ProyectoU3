@@ -71,7 +71,10 @@ public class ListaDoble{
   }
   //**************************************************************************
   public boolean empty(){
-    return (inicio==null && fin==null);
+    if(frente == null && ult == null){
+      return true;
+   }
+   return false;
   }
   //**************************************************************************
   public Empleado search(int num){
