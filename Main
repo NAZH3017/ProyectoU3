@@ -61,7 +61,9 @@ public class Main{
           break;
         //*************************************************************************
           case 2:
-           
+          System.out.println("Ingresa el numero de empleado que quieres eliminar");
+          short num = short.parseshort(leer.readLine());
+          Empleado tem = 
             
             
           break;
