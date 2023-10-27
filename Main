@@ -9,7 +9,7 @@ public class Main{
       }
     }
 //---------------------------------------------------------------------------------------------
-  public void llenar(LD LD)throws Exception{
+  public void llenar(LD LD)throws IOException{
     BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
     do{
       try{
@@ -21,19 +21,20 @@ public class Main{
         ValidarCadLetras(nom);
         System.out.print("Ingrese numero de empleado: ");
         short num = short.parseshort(leer.readLine());
-        if(num<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR MENORES A CERO>>");  }
+        if(num<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR NUMEROS MENORES O IGUALES A CERO>>");  }
         System.out.print("Ingrese percepciones: ");
         double per = short.parsedouble(leer.readLine());
-        if(per<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR MENORES A CERO>>");  }
+        if(per<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR NUMEROS MENORES O IGUALES A CERO>>");  }
         System.out.print("Ingresa las deducciones: ");
         double ded = double.parsedouble(leer.readLine());
-        if(ded<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR MENORES A CERO>>");  }
-        System.out.println("¿Hizo horas extra? (S o N )")
+        if(ded<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR NUMEROS MENORES O IGUALES A CERO>>");  }
+        System.out.println("Hizo horas extra? (S o N)");
         char r = char.parsechar(leer.readLine()).toUpperCase();
-        if(r!='S' || r='N'){  throw new ValorNoValidoExc("<<OPCON NO VALIDA: INGRESA solo 'S' O 'N'>>"); }
+        if(r!='S' || r!='N'){  throw new ValorNoValidoExc("<<OPCON NO VALIDA: INGRESA solo 'S' O 'N'>>"); }
         if (r == 'S'){
           System.out.println("¿Cuantas horas extra hizo?");
           short hext = short.parseshort(leer.readLine());
+          if(hext<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR NUMEROS MENORES O IGUALES A CERO>>");  }
         }else{
           short hext = 0;
         }
@@ -64,53 +65,76 @@ public class Main{
       System.out.println("Numero de empleado: "+aux.getnum()+"\n Nombre de empleado: "+aux.getnom()+"\n Ingreso neto: "+ineto);
       aux = aux.getsig();
     }
-    
   }
 //---------------------------------------------------------------------------------------------
-  public void consulta(LD ld) {
-      BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
-      int op;
+  public static void consulta(LD ld)throws IOException{
+    BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
+    try{
       System.out.print("Ingresa el numero del empleado a consultar");
       short num = short.parseshort(leer.readLine());
-      Empleado aux = search(num);
-      if (aux != null){
-       System.out.println("¿Deseas hacer algun cambio?");
-       char r = char.parsechar(leer.readLine()).toUpperCase();
-       if (r == 'S'){
-       System.out.println("1. Cambio de nombre");
-       System.out.println("2. Cambio de numero de empleado");
-       System.out.println("3. Cambio de percepciones ");
-       System.out.println("4. Cambio de deducciones ");
-       System.out.println("5. Cambio de horas extra");
-       System.out.println("¿Que cambio deseas hacer?(Salida -1)");
-       int op1 = Integer.parseInt(leer.readLine());
-       switch (op){
+      if(num<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR MENORES A CERO>>");  }
+      Empleado tem = search(num);
+      if(temp!=null){
+        System.out.println("Empleado encontrado:");
+        System.out.println("Nombre: "+tem.getnom());
+        System.out.println("Horas extras: "+tem.gethext());
+        System.out.println("Percepciones: "+tem.getper());
+        System.out.println("Deducciones: "+tem.getded());
+        System.out.println("Desea modifcar datos?(S o N )");
+        char r = char.parsechar(leer.readLine()).toUpperCase();
+        if(r!='S' || r=!'N'){  throw new ValorNoValidoExc("<<OPCON NO VALIDA: INGRESA solo 'S' O 'N'>>"); }
+        if (r == 'S'){
+          modificar(tem);
+        }
+      }else{
+        System.out.println("Empleado no encontrado");
+      }
+    }catch(NumberFormatException e){
+      System.out.println("<<ERROR: VALOR NO VALIDO>>");
+    }catch(ValorNoValidoExc e){
+      System.out.printl(e.getMessage());
+    }
+  }
+//---------------------------------------------------------------------------------------------
+  public static void modificar(Empleado E) throws ValorNoValidoExc, NumberFormatException{
+			int op;    
+      System.out.println("[MODIFICAR DATOS]");
+      System.out.println("1. NOMBRE");
+      System.out.println("2. Horas Extras");
+      System.out.println("3. Percepciones");
+      System.out.println("4. Deducciones");
+      System.out.println("5.-SALIR-");
+      System.out.print("Ingresar opcion: ");
+			op=Integer.parseInt(leer.readLine());
+			if(op<1 || op>5){  throw new ValorNoValidoExc("<<OPCION NO VALIDA>>");  }
+      swtich(op){
         case 1:
-          System.out.println("Ingresa el nombre nuevo");
+          System.out.print("Ingresa el nuevo nombre: ");
           String nom = leer.readLine();
-          aux.setnom(nom);
-					break;
-       case 2:
-          System.out.println("Ingresa el numero de empleado nuevo");
-          short num = short.parseshort(leer.readLine());
-          aux.setnum(num);
-          break;
-       case 3:
-         System.out.println("Ingrese las percepciones");
-         double per = double.parsedouble(leer.readLine());
-         aux.setper(per);
-         break;
-			case 4:
-         System.out.println("Ingrese lss deducciones");
-         double ded = double.parsedouble(leer.readLine);
-				 aux.setded(ded);
-				 break;
-     case 5:
-         System.out.println("Ingrese las horas extra");
-         short hext = short.parseshort(leer.readLine());
-         aux.sethext(hext);
-         break;
-      }while(op != -1);
+          ValidarCadLetras(nom);
+          if(per<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR NUMEROS MENORES O IGUALES A CERO>>");  }
+          E.setnom();
+        break;
+        case 2:
+          System.out.print("Ingresa horas extras: ");
+          short hext = short.parseshort(leer.readLine());
+          if(hext<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR NUMEROS MENORES O IGUALES A CERO>>");  }
+          E.sethext();
+        break;
+        case 3:
+          System.out.print("Ingresa percepciones: ");
+          double per = short.parsedouble(leer.readLine());
+          if(per<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR NUMEROS MENORES O IGUALES A CERO>>");  }
+          E.setper();
+        break;
+        case 4:
+          System.out.print("Ingresa deducciones: ");
+          System.out.print("Ingresa las deducciones: ");
+          double ded = double.parsedouble(leer.readLine());
+          if(ded<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR NUMEROS MENORES A CERO>>");  }
+          E.setded();
+        break;
+      }
   }
 //-------------------------------------------------Main---------------------------------------------
   public static void main(String[] args)throws Exception, ValorNoValidoExc{
@@ -161,7 +185,7 @@ public class Main{
         //*************************************************************************
           case 4:
             if(!LD.empty()){            
-              
+              consulta(LD);
             }else{
               System.out.println("Lista de empleados vacia. Ingresa empleados primero");
             }
