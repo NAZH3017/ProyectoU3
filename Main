@@ -72,6 +72,10 @@ public class Main{
       int op;
       System.out.print("Ingresa el numero del empleado a consultar");
       short num = short.parseshort(leer.readLine());
+      Empleado aux = search(num);
+      if (aux != null){
+       System.out.println("¿Deseas hacer algun cambio?");
+       
       
       
   }
