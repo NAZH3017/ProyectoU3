@@ -44,8 +44,8 @@ public class ListaDoble{
     }
   }
   //**************************************************************************
-  public NodoDoble delete(short num){
-    NodoDoble aux=search(nom);
+  public Empleado delete(short num){
+    Empleado aux=search(num);
     if(empty()){
       System.out.println("Lista vacia");
       return null;
