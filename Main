@@ -18,7 +18,18 @@ do{
               }else{
               short hext = 0;
               }
-              if (LD.empty
+              Empleado nuevo = new Empleado(nom,num,per,ded,hext);
+              if (LD.empty()){
+               LD.insert(nuevo);
+              }else{
+               Empleado tem = search(num);
+               if(nuevo.getnum() != tem.getnum()){
+                 LD.insert(nuevo)
+               }else{
+                 System.out.println("El dato ya existe");
+               }
+             }
+        }
 public class Main{
 //-------------------------------------------------Main---------------------------------------------
   public satatic void main(String[] args)throws Exeption, ValorNoValidoExc{
@@ -42,14 +53,15 @@ public class Main{
         switch(op){
         //*************************************************************************
           case 1:
-           
+          llenar(LD);
+          
              
             
             
           break;
         //*************************************************************************
           case 2:
-  
+           
             
             
           break;
