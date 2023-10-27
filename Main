@@ -86,7 +86,26 @@ public class Main{
        int op1 = Integer.parseInt(leer.readLine());
        switch (op){
         case 1:
-          
+          System.out.println("Ingresa el nombre nuevo");
+          String nom = leer.readLine();
+          aux.setnom(nom);
+					break;
+       case 2:
+          System.out.println("Ingresa el numero de empleado nuevo");
+          short num = short.parseshort(leer.readLine());
+          aux.setnum(num);
+          break;
+       case 3:
+         System.out.println("Ingrese las percepciones");
+         double per = double.parsedouble(leer.readLine());
+         aux.setper(per);
+         break;
+			case 4:
+         System.out.println("Ingrese lss deducciones");
+         double ded = double.parsedouble(leer.readLine);
+				 aux.setded(ded);
+				 break;
+     case 5:
       }while(op != -1);
   }
 //-------------------------------------------------Main---------------------------------------------
