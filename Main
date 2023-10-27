@@ -10,6 +10,7 @@ public class Main{
     }
 //---------------------------------------------------------------------------------------------
   public void llenar(LD LD)throws Exception{
+    BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
     do{
       try{
         System.out.print("(Salida: 'S')Ingresa nombre: ");
@@ -66,7 +67,16 @@ public class Main{
     
   }
 //---------------------------------------------------------------------------------------------
-  public void consulta(LD ld) {}
+  public void consulta(LD ld) {
+      BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
+      int op;
+      System.out.print("Ingresa el numero del empleado a consultar");
+      short num = short.parseshort(leer.readLine());
+      if(num<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR MENORES A CERO>>");  }
+      
+      
+      
+  }
 //-------------------------------------------------Main---------------------------------------------
   public static void main(String[] args)throws Exception, ValorNoValidoExc{
     BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
@@ -91,25 +101,35 @@ public class Main{
           break;
         //*************************************************************************
           case 2:
-          System.out.println("Ingresa el numero de empleado que quieres eliminar");
-          short num = short.parseshort(leer.readLine());
-          if(num<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR MENORES A CERO>>");  }
-          Empleado tem = delete(num);
-          if (tem != null){
-            System.out.println("El dato eliminado es:" + tem.getnom()+","+tem.getnum());
-          }else{
-            System.out.println("El dato no se encontro");
-          }
+            if(!LD.empty()){
+              System.out.print("Ingresa el numero de empleado que quieres eliminar: ");
+              short num = short.parseshort(leer.readLine());
+              if(num<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR MENORES A CERO>>");  }
+              Empleado tem = delete(num);
+              if (tem != null){
+                System.out.println("El dato eliminado es:" + tem.getnom()+","+tem.getnum());
+              }else{
+                System.out.println("El dato no se encontro");
+              }
+            }else{
+              System.out.println("Lista de empleados vacia. Ingresa empleados primero");
+            }
           break;
         //*************************************************************************
           case 3:
-          desplegar (LD);
+            if(!LD.empty()){            
+              desplegar (LD);
+            }else{
+              System.out.println("Lista de empleados vacia. Ingresa empleados primero");
+            }
           break;
         //*************************************************************************
           case 4:
-  
-  
-            
+            if(!LD.empty()){            
+              
+            }else{
+              System.out.println("Lista de empleados vacia. Ingresa empleados primero");
+            }
           break;
         }
       }catch(NumberFormatException e){
