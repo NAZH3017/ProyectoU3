@@ -32,7 +32,7 @@ do{
         }
 public class Main{
 //-------------------------------------------------Main---------------------------------------------
-  public satatic void main(String[] args)throws Exeption, ValorNoValidoExc{
+  public static void main(String[] args)throws Exception, ValorNoValidoExc{
     BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
     int op;
     LD LD=new LD();
@@ -63,7 +63,12 @@ public class Main{
           case 2:
           System.out.println("Ingresa el numero de empleado que quieres eliminar");
           short num = short.parseshort(leer.readLine());
-          Empleado tem = 
+          Empleado tem = delete(num);
+          if (tem != null){
+          System.out.println("El dato eliminado es:" + tem.getnom()+","+tem.getnum());
+          }else{
+          System.out.println("El dato no se encontro");
+          }
             
             
           break;
