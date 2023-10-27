@@ -1,9 +1,10 @@
 public class Empleados{
+  private String nom;
   private short num, hext;
   private double per, ded;
   private Empleado ant,sig;
 //----------------------------------------------------------------Constructor
-  public Empleados(short num, double per, double ded, int hext){
+  public Empleados(String nom,short num, double per, double ded, int hext){
     this.num = num;
     this.per = per;
     this.ded = ded;
