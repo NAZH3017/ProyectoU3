@@ -30,6 +30,16 @@ do{
                }
              }
         }
+public void desplegar (LD ld) {
+Empleado aux = ld.getinicio (); 
+double ineto = 0;
+while (aux != null) {
+ineto = aux.getper() - aux.getded();
+System.out.println("Numero de empleado: "+aux.getnum()+"\n Nombre de empleado: "+aux.getnom()+"\n Ingreso neto: "+ineto);
+}
+aux = aux.getsig();
+}
+public void consulta(LD ld) {
 public class Main{
 //-------------------------------------------------Main---------------------------------------------
   public static void main(String[] args)throws Exception, ValorNoValidoExc{
@@ -74,7 +84,7 @@ public class Main{
           break;
         //*************************************************************************
           case 3:
-  
+          desplegar (LD);
   
             
           break;
