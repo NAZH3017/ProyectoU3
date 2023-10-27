@@ -1,46 +1,72 @@
 package ProyectoU3;
 
-public void llenar(LD LD){
-do{
-              System.out.println("Ingresa nombre");
-              String nom = leer.readLine();
-              System.out.println("Ingrese numero de empleado");
-              short num = short.parseshort(leer.readLine());
-              System.out.println("Ingrese percepciones");
-              double per = short.parsedouble(leer.readLine());
-              System.out.println("Ingresa las deducciones");
-              double ded = double.parsedouble(leer.readLine());
-              System.out.println("¿Hizo horas extra? (S o N )")
-              char r = char.parsechar(leer.readLine()).toUpperCase();
-              if (r == 'S'){
-              System.out.println("¿Cuantas horas extra hizo?");
-              short hext = short.parseshort(leer.readLine());
-              }else{
-              short hext = 0;
-              }
-              Empleado nuevo = new Empleado(nom,num,per,ded,hext);
-              if (LD.empty()){
-               LD.insert(nuevo);
-              }else{
-               Empleado tem = search(num);
-               if(nuevo.getnum() != tem.getnum()){
-                 LD.insert(nuevo)
-               }else{
-                 System.out.println("El dato ya existe");
-               }
-             }
-        }
-public void desplegar (LD ld) {
-Empleado aux = ld.getinicio (); 
-double ineto = 0;
-while (aux != null) {
-ineto = aux.getper() - aux.getded();
-System.out.println("Numero de empleado: "+aux.getnum()+"\n Nombre de empleado: "+aux.getnom()+"\n Ingreso neto: "+ineto);
-}
-aux = aux.getsig();
-}
-public void consulta(LD ld) {
 public class Main{
+  public static void ValidarCadLetras(String cad) throws ValorNoValidoExc{
+    char c;
+    for (int i=0; i<cad.length(); i++) {    
+      c=cad.charAt(i);
+      if( Character.isDigit(c)){  throw new ValorNoValidoExc("\n<<NO PUEDE CONTENER NUMEROS>>");  }
+      }
+    }
+//---------------------------------------------------------------------------------------------
+  public void llenar(LD LD)throws Exception{
+    do{
+      try{
+        System.out.print("(Salida: 'S')Ingresa nombre: ");
+        String nom = leer.readLine();
+        if(nom.equals("S")){
+          break;
+        }
+        ValidarCadLetras(nom);
+        System.out.print("Ingrese numero de empleado: ");
+        short num = short.parseshort(leer.readLine());
+        if(num<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR MENORES A CERO>>");  }
+        System.out.print("Ingrese percepciones: ");
+        double per = short.parsedouble(leer.readLine());
+        if(per<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR MENORES A CERO>>");  }
+        System.out.print("Ingresa las deducciones: ");
+        double ded = double.parsedouble(leer.readLine());
+        if(ded<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR MENORES A CERO>>");  }
+        System.out.println("¿Hizo horas extra? (S o N )")
+        char r = char.parsechar(leer.readLine()).toUpperCase();
+        if(r!='S' || r='N'){  throw new ValorNoValidoExc("<<OPCON NO VALIDA: INGRESA solo 'S' O 'N'>>"); }
+        if (r == 'S'){
+          System.out.println("¿Cuantas horas extra hizo?");
+          short hext = short.parseshort(leer.readLine());
+        }else{
+          short hext = 0;
+        }
+        Empleado nuevo = new Empleado(nom,num,per,ded,hext);
+        if (LD.empty()){
+          LD.insert(nuevo);
+        }else{
+          Empleado tem = search(num);
+          if(nuevo.getnum() != tem.getnum()){
+            LD.insert(nuevo)
+          }else{
+            System.out.println("El dato ya existe");
+          }
+        }
+      }catch(NumberFormatException e){
+        System.out.println("<<ERROR: VALOR NO VALIDO>>");
+      }catch(ValorNoValidoExc e){
+        System.out.printl(e.getMessage());
+      }
+    }while(!nom.equals("S"));
+  }
+//---------------------------------------------------------------------------------------------
+  public void desplegar (LD ld) {
+    Empleado aux = ld.getinicio (); 
+    double ineto = 0;
+    while (aux != null){
+      ineto = aux.getper() - aux.getded();
+      System.out.println("Numero de empleado: "+aux.getnum()+"\n Nombre de empleado: "+aux.getnom()+"\n Ingreso neto: "+ineto);
+      aux = aux.getsig();
+    }
+    
+  }
+//---------------------------------------------------------------------------------------------
+  public void consulta(LD ld) {}
 //-------------------------------------------------Main---------------------------------------------
   public static void main(String[] args)throws Exception, ValorNoValidoExc{
     BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
@@ -57,36 +83,27 @@ public class Main{
       System.out.print("Ingresar opcion: ");
       try{
         op=Integer.parseInt(leer.readLine());
-        if(op<1 || op>5){
-          throw new ValorNoValidoExc("<<OPCION NO VALIDA>>");
-        }
+        if(op<1 || op>5){  throw new ValorNoValidoExc("<<OPCION NO VALIDA>>");  }
         switch(op){
         //*************************************************************************
           case 1:
-          llenar(LD);
-          
-             
-            
-            
+            llenar(LD);
           break;
         //*************************************************************************
           case 2:
           System.out.println("Ingresa el numero de empleado que quieres eliminar");
           short num = short.parseshort(leer.readLine());
+          if(num<=0){  throw new ValorNoValidoExc("<<NO SE PUEDEN INGRESAR MENORES A CERO>>");  }
           Empleado tem = delete(num);
           if (tem != null){
-          System.out.println("El dato eliminado es:" + tem.getnom()+","+tem.getnum());
+            System.out.println("El dato eliminado es:" + tem.getnom()+","+tem.getnum());
           }else{
-          System.out.println("El dato no se encontro");
+            System.out.println("El dato no se encontro");
           }
-            
-            
           break;
         //*************************************************************************
           case 3:
           desplegar (LD);
-  
-            
           break;
         //*************************************************************************
           case 4:
@@ -97,8 +114,10 @@ public class Main{
         }
       }catch(NumberFormatException e){
         System.out.println("<<ERROR: VALOR NO VALIDO>>");
-      }catch(ValorNoValidoExc e){}
+      }catch(ValorNoValidoExc e){
         System.out.printl(e.getMessage());
+      }
+        
     }while(op!=5);
   }
 }
