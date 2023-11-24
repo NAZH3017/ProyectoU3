@@ -1,0 +1,155 @@
+public class Departamento{//Arbol
+private nodoDepto raiz;
+//------------------------------------------------------------------------------Get y Set(Raiz)
+    public nodoDepto getRaiz(){
+        return raiz;
+    }
+    public void setRaiz(nodoDepto raiz){
+        this.raiz = raiz;
+    }
+//------------------------------------------------------------------------------Métodos
+    public boolean empty(){
+        return (raiz==null);
+    }
+    //**************************************************************************
+    public void insert(nodoDepto nuevo){
+        int nivel=0;
+        if(empty()){
+            setRaiz(nuevo);
+        }else{
+            nodoDepto aux=getRaiz();
+            while(aux!=nuevo){
+                if(nuevo.getNomDepto().compareTo(aux.getNomDepto())==0){//Nombres Iguales
+                    System.out.println("Departamento ya existente");
+                    break;
+                }else if(nuevo.getNomDepto().compareTo(aux.getNomDepto())<0){//nuevo.NomDepto()<aux.getCod()
+                    if(aux.getHIzq()==null){
+                        aux.setHIzq(nuevo);
+                    }
+                    aux=aux.getHIzq();
+                }else{
+                    if(aux.getHDer()==null){
+                        aux.setHDer(nuevo);
+                    }
+                    aux=aux.getHDer();
+                }
+                nivel++;
+            }
+            nuevo.setNivel(nivel);
+        }
+    }
+    //**************************************************************************
+    public nodoDepto delete(String nom){
+        nodoDepto aux=getRaiz();
+        nodoDepto padre=getRaiz();
+        while(aux!=null && !nom.equals(aux.getNomDepto())){
+            padre=aux;
+            if(nom.compareTo(aux.getNomDepto())<0){//cod<aux.getCod()
+                aux=aux.getHIzq();
+            }else{
+                aux=aux.getHDer();
+            }
+        }
+        if(aux==null){//No encontrado
+            return null;
+        }else if(aux.getHIzq()==null && aux.getHDer()==null){//Hoja
+            deleteHoja(padre, aux);
+            return aux;
+        }else if(aux.getHIzq()==null || aux.getHDer()==null){//Un Hijo
+            deleteUnHijo(padre, aux);
+            return aux;
+        }else{//Dos Hijos
+            deleteDosHijos(padre, aux);
+            return aux;
+        }
+        
+    }
+    //**************************************************************************
+    public void deleteHoja(nodoDepto Padre, nodoDepto aux){
+        if(Padre.getHIzq()==aux){
+            Padre.setHIzq(null);
+        }else{
+            Padre.setHDer(null);
+        }
+    }
+    //*************************************************
+    public void deleteUnHijo(nodoDepto Padre, nodoDepto aux){
+        if(Padre.getHIzq()==aux ){
+            if(aux.getHIzq()!=null){
+                Padre.setHIzq(aux.getHIzq());
+            }else{
+                Padre.setHIzq(aux.getHDer());
+            }
+            Padre.getHIzq().setNivel(aux.getNivel());//n
+        }else{
+            if(aux.getHDer()!=null){
+                Padre.setHDer(aux.getHDer());
+            }else{
+                Padre.setHDer(aux.getHIzq());
+            }
+            Padre.getHDer().setNivel(aux.getNivel());//n
+        }
+    }
+    //*************************************************
+    public void deleteDosHijos(nodoDepto Padre, nodoDepto aux){
+        if(aux.getHIzq().getHDer()==null){
+            aux.getHIzq().setHDer(aux.getHDer());
+            if(Padre.getHIzq()==aux){
+                Padre.setHIzq(aux.getHIzq());
+                Padre.getHIzq().setNivel((Padre.getNivel()+1));//n
+            }else{
+                Padre.setHDer(aux.getHIzq());
+                Padre.getHDer().setNivel((Padre.getNivel()+1));//n
+            }
+        }else{
+            nodoDepto Temp=aux.getHIzq();
+            nodoDepto Pad2=aux;
+            while(Temp.getHDer()!=null){
+                Pad2=Temp;
+                Temp=Temp.getHDer();
+            }
+            
+            Pad2.setHDer(Temp.getHIzq());
+            Pad2.getHDer().setNivel((Pad2.getNivel()+1));//n
+            Temp.setHDer(aux.getHDer());
+            Temp.setHIzq(aux.getHIzq());
+            Temp.getHDer().setNivel((Temp.getNivel()+1));//n
+            Temp.getHIzq().setNivel((Temp.getNivel()+1));//n
+            if(Padre.getHIzq()==aux){
+                Padre.setHIzq(Temp);
+                Padre.getHIzq().setNivel((Padre.getNivel()+1));//n
+            }else{
+                Padre.setHDer(Temp);
+                Padre.getHDer().setNivel((Padre.getNivel()+1));//n
+            }
+        }
+    }
+    //**************************************************************************
+    public void preorden(nodoDepto nodo){//Desplegar Departamentos en orden alfabetico
+        if(nodo!=null){
+            System.out.println("Departamento: "+nodo.getNomDepto());
+            System.out.println("Horas Extras: "+nodo.getNomina().TotalHrsExt());
+            System.out.println("Total de Ingresos brutos: "+nodo.getNomina().TotalPer()+"\n");
+            preorden(nodo.getHIzq());
+            preorden(nodo.getHDer());
+        }
+    }
+    /*
+    public void inorden(nodoDepto nodo){
+        if(nodo!=null){
+            inorden(nodo.getHIzq());
+            System.out.println("Cod: "+nodo.getCod()+"  Cant: "+nodo.getCant());
+            inorden(nodo.getHDer());
+        }
+    }
+    public void posorden(nodoDepto nodo){
+        if(nodo!=null){
+            posorden(nodo.getHIzq());
+            posorden(nodo.getHDer());
+            System.out.println("Cod: "+nodo.getCod()+"  Cant: "+nodo.getCant());
+        }
+    }
+    
+    //**************************************************************************
+    */
+}
