@@ -1,0 +1,57 @@
+public class nodoDepto{//Nodo Arbol
+    private String NomDepto;
+    private int nivel;
+    private ListaDoble nomina;
+    private nodoDepto HIzq;
+    private nodoDepto HDer;
+//------------------------------------------------------------------------------Constructor
+    public nodoDepto(String NomDepto){
+        this.NomDepto=NomDepto;
+        HIzq=HDer=null;
+    }
+//------------------------------------------------------------------------------Get's y Set's
+    //********************************************
+    public int getNivel() {
+        return nivel;
+    }
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+    //********************************************
+    public ListaDoble getNomina() {
+        return nomina;
+    }
+    //********************************************
+    public nodoDepto getHIzq() {
+        return HIzq;
+    }
+    public void setHIzq(nodoDepto HIzq) {
+        this.HIzq = HIzq;
+    }
+    //********************************************
+    public nodoDepto getHDer() {
+        return HDer;
+    }
+    public void setHDer(nodoDepto HDer) {
+        this.HDer = HDer;
+    }
+    public String getNomDepto() {
+        return NomDepto;
+    }
+    public void setNomDepto(String NomDepto) {
+        this.NomDepto = NomDepto;
+    }
+    
+    //------------------------------------------------------------------------------
+    public void DesplegarNomina(){
+        if(!nomina.empty()){
+            nomina.desplegar();
+            System.out.println("Total de Horas Extras: "+nomina.TotalHrsExt());
+            System.out.println("Importe Total de percepciones: "+nomina.TotalPer());
+            System.out.println("Nivel: "+getNivel());
+        }else{
+            System.out.println("Lista de empleado vacia");
+        }
+        
+    }
+}
