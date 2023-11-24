@@ -1,5 +1,0 @@
-public class ValorNoValidoExc extends Exception{
-  public ValorNoValidoExc(String Mensaje){
-    super(Mensaje);
-  }
-}
