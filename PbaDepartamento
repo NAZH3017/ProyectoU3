@@ -6,6 +6,7 @@ public class PbaDep {
     public static void main(String[] args) throws IOException {
         BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
         int op;
+        String nom;
         
     //---------------------------------------------------------------------------------------------
         do{
@@ -22,13 +23,15 @@ public class PbaDep {
             switch(op){
                 case 1: System.out.println("1. Agregar departamentos");
                 System.out.println("Ingresa el nombre del departamento");
-                String nom = leer.readLine().toUpperCase();
+                nom = leer.readLine().toUpperCase();
                 nodoDepto nuevo = new nodoDepto(nom);
                 insert(nuevo);   
                 break;
             //**********************************************************************************************
                 case 2: System.out.println("2. Eliminar departamento");
-                    
+                System.out.println("Ingresa el nombre del departamento a eliminar");
+                nom = leer.readLine().toUpperCase();
+                delete (nom);
                 break;
             //**********************************************************************************************
                 case 3: System.out.println("3. Desplegar Departamentos en orden alfabetico");
