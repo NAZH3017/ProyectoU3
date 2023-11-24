@@ -21,8 +21,10 @@ public class PbaDep {
             op=Integer.parseInt(leer.readLine());
             switch(op){
                 case 1: System.out.println("1. Agregar departamentos");
-                    
-                    
+                System.out.println("Ingresa el nombre del departamento");
+                String nom = leer.readLine().toUpperCase();
+                nodoDepto nuevo = new nodoDepto(nom);
+                insert(nuevo);   
                 break;
             //**********************************************************************************************
                 case 2: System.out.println("2. Eliminar departamento");
