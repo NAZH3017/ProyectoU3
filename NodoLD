@@ -1,0 +1,48 @@
+public class NodoLD{//Empleado
+    private String Nom;
+    private double Per, HExt;
+    private NodoLD sig, ant;
+//------------------------------------------------------------------------------Constructor
+     public NodoLD (String Nom, double Per, double HExt){
+        this.Nom=Nom;
+        this.Per=Per;        
+        this.HExt=HExt;
+        sig=ant=null;
+    }
+//------------------------------------------------------------------------------Get's y Set's
+    //*******************************************
+    public NodoLD getSig(){
+        return sig;
+    }
+    public void setSig(NodoLD sig){
+        this.sig = sig;
+    }
+    //*******************************************
+    public NodoLD getAnt(){
+        return ant;
+    }
+    public void setAnt(NodoLD ant){
+        this.ant = ant;
+    }
+    //*******************************************
+    public String getNom() {
+        return Nom;
+    }
+    public void setNom(String Nom) {
+        this.Nom = Nom;
+    }
+    //*******************************************
+    public double getPer() {
+        return Per;
+    }
+    public void setPer(double Per) {
+        this.Per = Per;
+    }
+//*******************************************
+    public double getHExt() {
+        return HExt;
+    }
+    public void setHExt(double HExt) {
+        this.HExt = HExt;
+    }
+}
