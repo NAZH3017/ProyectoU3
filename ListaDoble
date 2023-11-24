@@ -1,0 +1,127 @@
+public class ListaDoble{//Nomina
+    private NodoLD inicio, fin;
+//------------------------------------------------------------------------------------------------------------Get's y Set's
+    //**************************************************************************Inicio
+    public NodoLD getInicio(){
+        return inicio;
+    }
+    public void setInicio(NodoLD inicio){
+        this.inicio = inicio;
+    }
+    //**************************************************************************Fin
+    public NodoLD getFin(){
+        return fin;
+    }
+    public void setFin(NodoLD fin){
+        this.fin = fin;
+    }
+//------------------------------------------------------------------------------------------------------------Métodos
+    public void insert(NodoLD nuevo){
+        if(empty()){
+            inicio=fin=nuevo;
+        }else{
+            if(nuevo.getNom().compareTo(inicio.getNom())<=0){
+                nuevo.setSig(inicio);
+                inicio.setAnt(nuevo);
+                setInicio(nuevo);
+            }else{
+                if(nuevo.getNom().compareTo(fin.getNom())>0){
+                    nuevo.setAnt(fin);
+                    fin.setSig(nuevo);
+                    setFin(nuevo);
+                }else{
+                    NodoLD aux=getInicio();
+                    while(nuevo.getNom().compareTo(aux.getNom())>0){
+                        aux=aux.getSig();
+                    }
+                    nuevo.setSig(aux);
+                    nuevo.setAnt(aux.getAnt());
+                    aux.setAnt(nuevo);
+                    nuevo.getAnt().setSig(nuevo);
+                }
+            }
+        }
+    }
+    //**************************************************************************
+    public NodoLD search(String nom){
+        NodoLD aux=getInicio();
+        while(aux!=null && !nom.equals(aux.getNom())){
+            aux=aux.getSig();
+        }
+    return aux;
+    }
+    //**************************************************************************
+    public NodoLD delete(String nom){
+        NodoLD aux=search(nom);
+        if(empty()){
+            System.out.println("Lista vacia");
+            return null;
+        }
+        if(aux==null){
+            return null;
+        }else{
+            if(getInicio()==getFin()){//unico
+                setInicio(null);
+                setFin(null);
+            }else if(aux==getInicio()){
+                setInicio(aux.getSig());
+                getInicio().setAnt(null);
+            }else if(aux==getFin()){
+                setFin(aux.getAnt());
+                getFin().setSig(null);
+            }else{
+                aux.getSig().setAnt(aux.getAnt());
+                aux.getAnt().setSig(aux.getSig());
+            }
+            return aux;
+        }
+    }
+    //**************************************************************************
+    public boolean empty(){
+        return (inicio==null && fin==null);
+    }
+//-----------------------------------------------------------------------------------------------------------Otros métodos
+    public void desplegar(){
+        NodoLD aux=getInicio();
+        if(empty()){
+            System.out.println("Lista vacia");
+        }else{
+            while(aux!=null){
+                System.out.println("Nombre: "+aux.getNom()+"\nPercepciones: "+aux.getPer()+"\nHoras Extras: "+aux.getHExt()+"\n");
+                aux=aux.getSig();
+            }
+        }
+    }
+    //**************************************************************************
+    public double TotalHrsExt(){
+        NodoLD aux=getInicio();
+        double T=0;
+        if(empty()){
+            System.out.println("Lista vacia");
+        }else{
+            while(aux!=null){
+                T+=aux.getHExt();
+                aux=aux.getSig();
+            }
+        }
+        return T;
+    }
+    //**************************************************************************
+    public double TotalPer(){
+        NodoLD aux=getInicio();
+        double T=0;
+        if(empty()){
+            System.out.println("Lista vacia");
+        }else{
+            while(aux!=null){
+                T+=aux.getPer();
+                aux=aux.getSig();
+            }
+        }
+        return T;
+    }
+//-----------------------------------------------------------------------------------------------------------
+
+    
+    
+}
