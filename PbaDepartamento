@@ -1,0 +1,51 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class PbaDep {
+    public static void main(String[] args) throws IOException {
+        BufferedReader leer=new BufferedReader(new InputStreamReader(System.in));
+        int op;
+        
+    //---------------------------------------------------------------------------------------------
+        do{
+            System.out.println("<-----[MENU]----->");
+            System.out.println("1. Agregar departamentos");
+            System.out.println("2. Eliminar departamento");
+            System.out.println("3. Desplegar Departamentos en orden alfabetico");
+            System.out.println("4. Menu de nomina de empleado de un departamento");
+            System.out.println("5 Desplegar depatamentos por nivel alfabetico");
+            System.out.println("6. Consulta de un departamento");
+            System.out.println("<----7. Salir---->");
+            System.out.print("Ingresa la opcion: ");
+            op=Integer.parseInt(leer.readLine());
+            switch(op){
+                case 1: System.out.println("1. Agregar departamentos");
+                    
+                    
+                break;
+            //**********************************************************************************************
+                case 2: System.out.println("2. Eliminar departamento");
+                    
+                break;
+            //**********************************************************************************************
+                case 3: System.out.println("3. Desplegar Departamentos en orden alfabetico");
+                    
+                break;
+            //**********************************************************************************************
+                case 4: System.out.println("4. Menu de nomina de empleado de un departamento");
+                    
+                break;
+            //**********************************************************************************************
+                case 5: System.out.println("5 Desplegar depatamentos por nivel alfabetico");
+                    
+                break;
+            //**********************************************************************************************
+                case 6: System.out.println("6. Consulta de un departamento");
+                    
+                break;
+            }
+            System.out.println("\n\n");
+        }while(op!=7);
+    }
+}
