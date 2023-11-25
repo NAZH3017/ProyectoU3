@@ -1,0 +1,53 @@
+ublic class ListaDobleCola {
+    private NodoListaCola inicio;
+    private NodoListaCola fin;
+    
+    public NodoListaCola getInicio() {
+        return inicio;
+    }
+
+    public void setInicio(NodoListaCola inicio) {
+        this.inicio = inicio;
+    }
+
+    public NodoListaCola getFin() {
+        return fin;
+    }
+
+    public void setFin(NodoListaCola fin) {
+        this.fin = fin;
+    }
+    
+    public boolean empty(){
+        if(inicio==null && fin==null){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    
+    //--------------------------------
+    public void insertFin(NodoListaCola nuevo){
+        if(empty()){
+            setInicio(nuevo);
+            setFin(nuevo);
+        }else{
+            getFin().setSig(nuevo);
+            nuevo.setAnt(getFin());
+            setFin(nuevo);
+        }
+    }
+    //-------------------------
+    public NodoListaCola removeInicio(){
+        NodoListaCola aux = getInicio();
+        if(getInicio()==getFin()){
+            setInicio(null);
+            setFin(null);
+        }else{
+            setInicio(aux.getSig());
+            getInicio().setAnt(null);
+        }
+        return aux;
+    }
+}
