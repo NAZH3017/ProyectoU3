@@ -1,0 +1,4 @@
+public class EmpleadoRepetido  extends Exception{
+    public EmpleadoRepetido(String msg){
+        super(msg);
+    }
