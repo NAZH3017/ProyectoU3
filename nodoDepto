@@ -4,54 +4,71 @@ public class nodoDepto{//Nodo Arbol
     private ListaDoble nomina;
     private nodoDepto HIzq;
     private nodoDepto HDer;
+    private double totalHextra;
+    private double totalImpPerc;
 //------------------------------------------------------------------------------Constructor
     public nodoDepto(String NomDepto){
-        this.NomDepto=NomDepto;
-        HIzq=HDer=null;
+        this.nombreDepto = nombreDepto;
+        this.nivel=0;
+        this.nomina = new ListaDoble();
+        totalHextra = totalImpPerc = 0;
+        hizq = hder = null;
     }
 //------------------------------------------------------------------------------Get's y Set's
     //********************************************
-    public int getNivel() {
-        return nivel;
-    }
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
-    }
-    //********************************************
-    public ListaDoble getNomina() {
-        return nomina;
-    }
-    //********************************************
-    public nodoDepto getHIzq() {
+    public NodoDepto getHIzq() {
         return HIzq;
     }
-    public void setHIzq(nodoDepto HIzq) {
+
+    public void setHIzq(NodoDepto HIzq) {
         this.HIzq = HIzq;
     }
-    //********************************************
-    public nodoDepto getHDer() {
+
+    public NodoDepto getHDer() {
         return HDer;
     }
-    public void setHDer(nodoDepto HDer) {
+
+    public void setHDer(NodoDepto HDer) {
         this.HDer = HDer;
     }
+
     public String getNomDepto() {
         return NomDepto;
     }
+
     public void setNomDepto(String NomDepto) {
         this.NomDepto = NomDepto;
     }
-    
-    //------------------------------------------------------------------------------
-    public void DesplegarNomina(){
-        if(!nomina.empty()){
-            nomina.desplegar();
-            System.out.println("Total de Horas Extras: "+nomina.TotalHrsExt());
-            System.out.println("Importe Total de percepciones: "+nomina.TotalPer());
-            System.out.println("Nivel: "+getNivel());
-        }else{
-            System.out.println("Lista de empleado vacia");
-        }
-        
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public void setNivel(int nivel) {
+        this.nivel = nivel;
+    }
+
+    public ListaDoble getNomina() {
+        return nomina;
+    }
+
+    public void setNomina(ListaDoble nomina) {
+        this.nomina = nomina;
+    }
+
+    public double getTotalHextra() {
+        return totalHextra;
+    }
+
+    public void setTotalHextra(double totalHextra) {
+        this.totalHextra = totalHextra;
+    }
+
+    public double getTotalImpPerc() {
+        return totalImpPerc;
+    }
+
+    public void setTotalImpPerc(double totalImpPerc) {
+        this.totalImpPerc = totalImpPerc;
     }
 }
