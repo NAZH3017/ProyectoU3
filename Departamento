@@ -177,6 +177,17 @@ private nodoDepto raiz;
         System.out.println("Total Horas Extra: "+nodo.getTotalHextra());
         System.out.println("Total de ingresos brutos: "+nodo.getTotalImpPerc()+"\n");
     }
+    public void consultarDep(NodoDepto nodo){
+        System.out.println("Nombre: "+nodo.getNomDepto());
+        System.out.println("Nivel: "+nodo.getNivel());
+        System.out.println("Total Horas Extra: "+nodo.getTotalHextra());
+        System.out.println("Total de ingresos brutos: "+nodo.getTotalImpPerc()+"\n");
+        System.out.println("\n[Nomina]: ");
+        nodo.desplegar();
+
+    }
+
+System.out.println(
     public NodoDepto buscar(String nombre) {
         NodoDepto aux = getRaiz();
         while(aux != null && !nombre.equals(aux.getNomDepto())){
