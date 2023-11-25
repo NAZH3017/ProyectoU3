@@ -87,7 +87,8 @@ public class ListaDoble{//Nomina
             System.out.println("Lista vacia");
         }else{
             while(aux!=null){
-                System.out.println("Nombre: "+aux.getNom()+"\nPercepciones: "+aux.getPer()+"\nHoras Extras: "+aux.getHExt()+"\n");
+                System.out.println("Numero de empleado: "+aux.getNumEmpl());
+                System.out.println("Ingreso Neto: "+aux.getIngresoNeto());
                 aux=aux.getSig();
             }
         }
@@ -107,18 +108,33 @@ public class ListaDoble{//Nomina
         return T;
     }
     //**************************************************************************
-    public double TotalPer(){
-        NodoLD aux=getInicio();
-        double T=0;
-        if(empty()){
-            System.out.println("Lista vacia");
-        }else{
+    public double totalIngresosBrutos(){
+        double suma =0;
+        if (empty()){
+            return 0;
+        }
+        else{
+            NodoLD aux = getInicio();
             while(aux!=null){
-                T+=aux.getPer();
+                suma+=aux.getIngresoNeto();
                 aux=aux.getSig();
             }
         }
-        return T;
+        return suma;
+    }
+    //-------------------
+    public int totalHExtra(){
+        int suma = 0;
+        if(empty()){
+            return 0;
+        }else{
+            NodoLD aux = getInicio();
+            while(aux!=null){
+                suma+=aux.getHorasExtra();
+                aux=aux.getSig();
+            }
+        }
+        return suma;
     }
 //-----------------------------------------------------------------------------------------------------------
 
