@@ -125,31 +125,50 @@ private nodoDepto raiz;
         }
     }
     //**************************************************************************
-    public void preorden(nodoDepto nodo){//Desplegar Departamentos en orden alfabetico
+    public void inOrden(nodoDepto nodo){//Desplegar Departamentos en orden alfabetico
         if(nodo!=null){
+            inOrden(nodo.getHIzq());
             System.out.println("Departamento: "+nodo.getNomDepto());
-            System.out.println("Horas Extras: "+nodo.getNomina().TotalHrsExt());
-            System.out.println("Total de Ingresos brutos: "+nodo.getNomina().TotalPer()+"\n");
-            preorden(nodo.getHIzq());
-            preorden(nodo.getHDer());
+            System.out.println("Horas Extras: "+nodo.getTotalHextra());
+            System.out.println("Total de Ingresos brutos: "+nodo.getTotalImpPerc()+"\n");
+            inOrden(nodo.getHDer());
         }
     }
-    /*
-    public void inorden(nodoDepto nodo){
-        if(nodo!=null){
-            inorden(nodo.getHIzq());
-            System.out.println("Cod: "+nodo.getCod()+"  Cant: "+nodo.getCant());
-            inorden(nodo.getHDer());
-        }
-    }
-    public void posorden(nodoDepto nodo){
-        if(nodo!=null){
-            posorden(nodo.getHIzq());
-            posorden(nodo.getHDer());
-            System.out.println("Cod: "+nodo.getCod()+"  Cant: "+nodo.getCant());
-        }
-    }
-    
     //**************************************************************************
-    */
+    public NodoDepto buscarDepto(NodoDepto nodo, NodoDepto aux, String nDepto){
+        //aux para recorrer arbol, nodo para guardar
+        if(aux!=null){
+            nodo = buscarDepto(nodo,aux.getHIzq(),nDepto);
+            nodo = buscarDepto(nodo,aux.getHDer(),nDepto);
+            if(aux.getNomDepto().equals(nDepto)){
+                return aux;
+            }
+        }
+        return nodo;
+    }
+    //---------------------------------------------------------------------------------ss
+    public void despAnchura(NodoDepto nodoDep, ListaDobleCola LauxC) {
+        do {
+            if (LauxC.empty()) {
+                NodoListaCola nuevoLC = new NodoListaCola(nodoDep);
+                LauxC.insertFin(nuevoLC);
+            }
+            if (LauxC.getInicio().getInfo().getHizq() != null) {
+                NodoListaCola nuevoLC = new NodoListaCola(LauxC.getInicio().getInfo().getHizq());
+                LauxC.insertFin(nuevoLC);
+            }
+            if (LauxC.getInicio().getInfo().getHder() != null) {
+                NodoListaCola nuevoD = new NodoListaCola(LauxC.getInicio().getInfo().getHder());
+                LauxC.insertFin(nuevoD);
+            }
+            //agregar los hijos a la lista
+            //eliminar los insertados para imprimirlos
+            NodoListaCola aux = LauxC.getInicio();
+            LauxC.removeInicio();
+            System.out.println("------------------------------------");
+            System.out.println("---> Nivel: "+aux.getInfo().getNivel());
+            System.out.println("--> Nombre de Departamento: "+aux.getInfo().getNombreDepto());
+            System.out.println("--> Total de Ingresos Brutos: "+aux.getInfo().getTotalImpPerc());
+        } while (!LauxC.empty());
+    }
 }
