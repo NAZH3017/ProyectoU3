@@ -1,0 +1,34 @@
+private NodoDepto info;
+    private NodoListaCola sig;
+    private NodoListaCola ant; //siguiente y anterior
+    
+    public NodoListaCola(NodoDepto info){
+        this.info=info;
+        sig=null;
+        ant=null;
+        //anterior y siguiente null porque al principio está vacía
+    }
+
+    public NodoDepto getInfo() {
+        return info;
+    }
+
+    public void setInfo(NodoDepto info) {
+        this.info = info;
+    }
+
+    public NodoListaCola getSig() {
+        return sig;
+    }
+
+    public void setSig(NodoListaCola sig) {
+        this.sig = sig;
+    }
+
+    public NodoListaCola getAnt() {
+        return ant;
+    }
+
+    public void setAnt(NodoListaCola ant) {
+        this.ant = ant;
+    }
