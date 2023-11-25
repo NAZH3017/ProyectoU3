@@ -88,7 +88,10 @@ public class ListaDoble{//Nomina
         }else{
             while(aux!=null){
                 System.out.println("Numero de empleado: "+aux.getNumEmpl());
-                System.out.println("Ingreso Neto: "+aux.getIngresoNeto());
+                System.out.println("Importe de percepciones: "+aux.getImpPerc());
+                System.out.println("Importe de deducciones: "+aux.getImpDeduc());
+                System.out.println("Horas extras: "+aux.getHorasExtra());
+                System.out.println("Ingreso Neto: "+aux.getIngresoNeto()+"\n");
                 aux=aux.getSig();
             }
         }
