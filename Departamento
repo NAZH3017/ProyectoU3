@@ -94,12 +94,13 @@ private nodoDepto raiz;
     public void deleteDosHijos(nodoDepto Padre, nodoDepto aux){
         if(aux.getHIzq().getHDer()==null){
             aux.getHIzq().setHDer(aux.getHDer());
+            aux.getHIzq().getHDer(aux.getNivel()());
             if(Padre.getHIzq()==aux){
                 Padre.setHIzq(aux.getHIzq());
-                Padre.getHIzq().setNivel((Padre.getNivel()+1));//n
+                Padre.getHIzq().setNivel(aux.getNivel());//n
             }else{
                 Padre.setHDer(aux.getHIzq());
-                Padre.getHDer().setNivel((Padre.getNivel()+1));//n
+                Padre.getHDer().setNivel(aux.getNivel());//n
             }
         }else{
             nodoDepto Temp=aux.getHIzq();
@@ -110,7 +111,7 @@ private nodoDepto raiz;
             }
             
             Pad2.setHDer(Temp.getHIzq());
-            Pad2.getHDer().setNivel((Pad2.getNivel()+1));//n
+            Pad2.getHDer().setNivel(Temp.getNivel());//n
             Temp.setHDer(aux.getHDer());
             Temp.setHIzq(aux.getHIzq());
             Temp.getHDer().setNivel((Temp.getNivel()+1));//n
@@ -165,10 +166,26 @@ private nodoDepto raiz;
             //eliminar los insertados para imprimirlos
             NodoListaCola aux = LauxC.getInicio();
             LauxC.removeInicio();
-            System.out.println("------------------------------------");
-            System.out.println("---> Nivel: "+aux.getInfo().getNivel());
-            System.out.println("--> Nombre de Departamento: "+aux.getInfo().getNombreDepto());
-            System.out.println("--> Total de Ingresos Brutos: "+aux.getInfo().getTotalImpPerc());
+            System.out.println("\nNivel: "+aux.getInfo().getNivel());
+            System.out.println("Nombre de Departamento: "+aux.getInfo().getNomDepto());
+            System.out.println("Total de Ingresos Brutos: "+aux.getInfo().getTotalImpPerc()+"\n");
         } while (!LauxC.empty());
+    }
+    public void desplNodo(NodoDepto nodo){
+        System.out.println("Nombre: "+nodo.getNomDepto());
+        System.out.println("Nivel: "+nodo.getNivel());
+        System.out.println("Total Horas Extra: "+nodo.getTotalHextra());
+        System.out.println("Total de ingresos brutos: "+nodo.getTotalImpPerc()+"\n");
+    }
+    public NodoDepto buscar(String nombre) {
+        NodoDepto aux = getRaiz();
+        while(aux != null && !nombre.equals(aux.getNomDepto())){
+            if (aux.getNombreDepto().compareTo(nombre)<0) {
+                aux=aux.getHIzq();
+            } else {
+                aux=aux.getHDer();
+            }
+        }
+        return aux;
     }
 }
