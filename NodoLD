@@ -1,48 +1,75 @@
 public class NodoLD{//Empleado
-    private String Nom;
-    private double Per, HExt;
-    private NodoLD sig, ant;
+    private int numEmpl;
+    private double impPerc;
+    private double impDeduc;
+    private int horasExtra;
+    private double ingresoNeto;
+    private NodoLista sig;
+    private NodoLista ant;
 //------------------------------------------------------------------------------Constructor
-     public NodoLD (String Nom, double Per, double HExt){
-        this.Nom=Nom;
-        this.Per=Per;        
-        this.HExt=HExt;
-        sig=ant=null;
+    public NodoLD (int numEmpl, double impPerc, double impDeduc, int horasExtra, double ingresoNeto){
+        this.numEmpl=numEmpl;
+        this.impPerc=impPerc;
+        this.impDeduc=impDeduc;
+        this.horasExtra=horasExtra;
+        this.ingresoNeto=ingresoNeto;
+        ant=sig=null;
     }
 //------------------------------------------------------------------------------Get's y Set's
-    //*******************************************
-    public NodoLD getSig(){
+public NodoLista getSig() {
         return sig;
     }
-    public void setSig(NodoLD sig){
+
+    public void setSig(NodoLista sig) {
         this.sig = sig;
     }
-    //*******************************************
-    public NodoLD getAnt(){
+
+    public NodoLista getAnt() {
         return ant;
     }
-    public void setAnt(NodoLD ant){
+
+    public void setAnt(NodoLista ant) {
         this.ant = ant;
     }
-    //*******************************************
-    public String getNom() {
-        return Nom;
+
+    public int getNumEmpl() {
+        return numEmpl;
     }
-    public void setNom(String Nom) {
-        this.Nom = Nom;
+
+    public void setNumEmpl(int numEmpl) {
+        this.numEmpl = numEmpl;
     }
-    //*******************************************
-    public double getPer() {
-        return Per;
+
+    public double getImpPerc() {
+        return impPerc;
     }
-    public void setPer(double Per) {
-        this.Per = Per;
+
+    public void setImpPerc(double impPerc) {
+        this.impPerc = impPerc;
     }
-//*******************************************
-    public double getHExt() {
-        return HExt;
+
+    public double getImpDeduc() {
+        return impDeduc;
     }
-    public void setHExt(double HExt) {
-        this.HExt = HExt;
+
+    public void setImpDeduc(double impDeduc) {
+        this.impDeduc = impDeduc;
     }
+
+    public int getHorasExtra() {
+        return horasExtra;
+    }
+
+    public void setHorasExtra(int horasExtra) {
+        this.horasExtra = horasExtra;
+    }
+
+    public double getIngresoNeto() {
+        return ingresoNeto;
+    }
+
+    public void setIngresoNeto(double ingresoNeto) {
+        this.ingresoNeto = ingresoNeto;
+    }
+
 }
