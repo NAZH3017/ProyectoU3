@@ -21,35 +21,81 @@ public class PbaDep {
             System.out.print("Ingresa la opcion: ");
             op=Integer.parseInt(leer.readLine());
             switch(op){
-                case 1: System.out.println("1. Agregar departamentos");
-                System.out.println("Ingresa el nombre del departamento");
-                nom = leer.readLine().toUpperCase();
-                nodoDepto nuevo = new nodoDepto(nom);
-                insert(nuevo);   
-                break;
+                try {
+                                                System.out.println("Teclee el nuevo numero de empleado: ");
+                                                int NnumEmp = Integer.parseInt(leer.readLine());
+                                                nodoConsultado.setNumEmpl(NnumEmp);
+                                            } catch (NumberFormatException e) {
+                                                System.out.println("Tipo de dato incorrecto. " + e.getMessage());
+                                            }
+                                            break;   
+                
             //**********************************************************************************************
                 case 2: System.out.println("2. Eliminar departamento");
-                System.out.println("Ingresa el nombre del departamento a eliminar");
-                nom = leer.readLine().toUpperCase();
-                delete (nom);
+                try {
+                                                System.out.println("Teclee el nuevo importe de percepciones: ");
+                                                double NimpPerc = Double.parseDouble(leer.readLine());
+                                                double NingNet = NimpPerc - nodoConsultado.getImpDeduc();
+                                                nodoConsultado.setImpPerc(NimpPerc);
+                                                nodoConsultado.setIngresoNeto(NingNet);
+                                            } catch (NumberFormatException e) {
+                                                System.out.println("Tipo de dato incorrecto. " + e.getMessage());
+                                            }
                 break;
             //**********************************************************************************************
                 case 3: System.out.println("3. Desplegar Departamentos en orden alfabetico");
-                    
+                 try {
+                                                System.out.println("Teclee el nuevo importe de deducciones: ");
+                                                double NimpDeduc = Double.parseDouble(leer.readLine());
+                                                double NingNet2 = nodoConsultado.getImpPerc() - NimpDeduc;
+                                                nodoConsultado.setImpDeduc(NimpDeduc);
+                                                nodoConsultado.setIngresoNeto(NingNet2);
+                                            } catch (NumberFormatException e) {
+                                                System.out.println("Tipo de dato incorrecto. " + e.getMessage());
+                                            } 
                 break;
             //**********************************************************************************************
                 case 4: System.out.println("4. Menu de nomina de empleado de un departamento");
-                    
+                try {
+                                                System.out.println("Teclee la nueva cantidad de horas extra: ");
+                                                int NhrsEx = Integer.parseInt(leer.readLine());
+                                                nodoConsultado.setHorasExtra(NhrsEx);
+                                            } catch (NumberFormatException e) {
+                                                System.out.println("Tipo de dato incorrecto. " + e.getMessage());
+                                            }
+                
                 break;
             //**********************************************************************************************
                 case 5: System.out.println("5 Desplegar depatamentos por nivel alfabetico");
-                    
+                 try {
+                                                System.out.println("Teclee el nuevo ingreso neto");
+                                                double NingNeto = Double.parseDouble(leer.readLine());
+                                                nodoConsultado.setIngresoNeto(NingNeto);
+                                            } catch (NumberFormatException e) {
+                                                System.out.println("Tipo de dato incorrecto. " + e.getMessage());
+                                            }   
                 break;
             //**********************************************************************************************
                 case 6: System.out.println("6. Consulta de un departamento");
                     
                 break;
             }
+}
+                                    }
+                                }
+                            } catch (NumberFormatException e) {
+                                System.out.println("Tipo de dato incorrecto " + e.getMessage());
+                            }
+                        }
+                        depto.setTotalImpPerc(Laux.totalIngresosBrutos());
+                        depto.setTotalHextra(Laux.totalHExtra());
+                        break;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Tipo de dato incorrecto " + e.getMessage());
+            }
+            depto.setTotalImpPerc(Laux.totalIngresosBrutos());
+            depto.setTotalHextra(Laux.totalHExtra());
             System.out.println("\n\n");
         }while(op!=7);
     }
