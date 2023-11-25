@@ -155,11 +155,11 @@ private nodoDepto raiz;
                 LauxC.insertFin(nuevoLC);
             }
             if (LauxC.getInicio().getInfo().getHizq() != null) {
-                NodoListaCola nuevoLC = new NodoListaCola(LauxC.getInicio().getInfo().getHizq());
+                NodoListaCola nuevoLC = new NodoListaCola(LauxC.getInicio().getInfo().getHIzq());
                 LauxC.insertFin(nuevoLC);
             }
             if (LauxC.getInicio().getInfo().getHder() != null) {
-                NodoListaCola nuevoD = new NodoListaCola(LauxC.getInicio().getInfo().getHder());
+                NodoListaCola nuevoD = new NodoListaCola(LauxC.getInicio().getInfo().getHDer());
                 LauxC.insertFin(nuevoD);
             }
             //agregar los hijos a la lista
